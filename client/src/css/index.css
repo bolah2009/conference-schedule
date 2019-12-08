@@ -1,0 +1,506 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  background: transparent;
+}
+
+:root {
+  --color-1: #35bee0;
+  --color-2: #59499e;
+  --color-3: #18cebb;
+  --color-4: #ffc611;
+  --color-5: #5cba47;
+  --color-6: #8589ef;
+  --color-7: #ff6ea1;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  overflow-x: hidden;
+  background: #fff;
+
+  /* background: #f4f4f4; */
+  color: #59499e;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  display: block;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+button[disable] {
+  cursor: not-allowed;
+}
+
+h1 {
+  font-size: 1.2em;
+}
+
+h2 {
+  font-size: 1.1em;
+}
+
+h3,
+h4,
+h5 {
+  font-size: 1em;
+}
+
+/* Navigation */
+
+.nav-bar {
+  background-color: var(--color-2);
+  padding: 8px 12px;
+}
+
+.account-icon {
+  margin-right: 8px;
+}
+
+.nav-bar * {
+  color: #fff;
+}
+
+.nav-bar .label {
+  font-weight: 700;
+}
+
+.main {
+  padding: 16px;
+}
+
+.main h1 {
+  margin: 24px 0;
+  text-align: center;
+}
+
+/* Home */
+
+.home-page {
+  padding: 8px;
+}
+
+.home-title {
+  text-align: center;
+  font-style: italic;
+  padding-bottom: 16px;
+  border-bottom: 0.1px solid;
+}
+
+.featured-conference {
+  padding: 16px 0;
+}
+
+.featured-conference-title {
+  font-weight: 400;
+}
+
+/* Conference List */
+
+.conference-card {
+  margin: 16px 0;
+  padding: 8px;
+  background: #fff;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+}
+
+.conference-card p {
+  font-size: 0.9em;
+}
+
+.conference-card a {
+  font-size: 0.8em;
+}
+
+.card-title-name {
+  margin-right: 8px;
+}
+
+/* Conferences */
+
+.conferences {
+  padding: 8px;
+}
+
+/* Conference */
+
+.conference-header {
+  padding: 8px 0;
+  color: #fff;
+  background: #59499e;
+}
+
+/* Slider */
+
+.slider {
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+}
+
+.slides {
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+}
+
+.slides > div {
+  height: 100px;
+  margin: 0 2%;
+  background: #8589ef;
+}
+
+.full-slide {
+  width: 82%;
+  border-radius: 5px;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.count-day,
+.count-minute,
+.count-hour {
+  width: 33%;
+}
+
+.full-slide > div > div {
+  padding: 4px;
+}
+
+.count-label {
+  font-size: 0.7em;
+}
+
+.count-digit {
+  font-size: 1em;
+}
+
+.count-hour {
+  border-left: 1px solid;
+  border-right: 1px solid;
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+div.half-slide-left {
+  width: 4%;
+  height: 90px;
+  margin-left: 0;
+  border-radius: 0 5px 5px 0;
+}
+
+div.half-slide-right {
+  width: 4%;
+  height: 90px;
+  margin-right: 0;
+  border-radius: 5px 0 0 5px;
+}
+
+.dots > .dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  background: #fff;
+  border-radius: 50%;
+  margin: 0.8rem 0.2rem 0.8rem 0.2rem;
+}
+
+.dots > .dot:nth-of-type(2) {
+  background: #8589ef;
+}
+
+.menu {
+  padding: 16px;
+}
+
+.menu-item {
+  width: 72px;
+  height: 72px;
+  padding: 8px;
+  margin: 8px;
+  font-size: 0.6em;
+  font-weight: 700;
+  background: #fff;
+  box-shadow: 1px 1px 1px 1px #fff;
+  border-radius: 2px;
+}
+
+.menu-item-text {
+  margin-top: 8px;
+}
+
+.twitter-feeds {
+  padding: 16px;
+}
+
+.twitter-feeds-title {
+  padding: 16px;
+}
+
+.twitter-feeds-item {
+  padding: 16px 24px;
+  background: #fff;
+  border-bottom: 0.4px solid rgba(0, 0, 0, 0.1);
+}
+
+.bullet {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 2px solid;
+  background: #fff;
+}
+
+.twitter-feeds-item .bullet {
+  border-color: #ffc611;
+  margin-right: 4px;
+}
+
+.twitter-feeds-item h5 {
+  font-size: 0.8em;
+  margin-left: 4px;
+}
+
+.twitter-feeds-item p {
+  padding-top: 4px;
+  font-size: 0.8em;
+}
+
+.agendas {
+  padding: 0 16px;
+}
+
+.agenda-wrapper {
+  position: relative;
+  border-left: 1px solid;
+  padding: 1px 0 1px 16px;
+}
+
+.day-wrapper {
+  margin-top: 16px;
+  color: #ff6ea1;
+}
+
+.day-wrapper .bullet,
+.time-wrapper .bullet {
+  width: 12px;
+  height: 12px;
+  position: relative;
+  left: -23px;
+  z-index: 1;
+}
+
+.agenda-day,
+.agenda-time {
+  margin-left: -10px;
+  font-size: 1.2em;
+  font-weight: 700;
+}
+
+.agenda-time {
+  font-size: 0.7em;
+  text-transform: lowercase;
+}
+
+.time-wrapper {
+  margin-top: 16px;
+  color: #35bee0;
+}
+
+.agenda-card {
+  margin-top: 8px;
+  height: 92px;
+  background: #fff;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+}
+
+.add-to-schedule {
+  font-weight: 700;
+  font-size: 0.5em;
+  width: 32px;
+  color: #fff;
+  background: #59499e;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.add-to-schedule[disabled] {
+  background: #5cba47;
+  cursor: not-allowed;
+}
+
+.add-to-schedule .content {
+  transform: rotate(-90deg);
+  white-space: nowrap;
+}
+
+.add-to-schedule .text {
+  margin-left: 4px;
+}
+
+.agenda-card .link {
+  padding: 16px;
+}
+
+.agenda-card .link-title {
+  font-size: 1em;
+  margin-bottom: 8px;
+}
+
+.agenda-card .link-speaker,
+.agenda-card .link-location {
+  font-size: 1em;
+  margin-left: 4px;
+}
+
+.profile {
+  padding: 16px;
+}
+
+.profile .time-wrapper {
+  display: none;
+}
+
+.profile .agenda-card {
+  margin: 8px 0;
+}
+
+/* Agenda */
+
+.agenda-header {
+  padding: 8px;
+  color: #fff;
+  background: #59499e;
+}
+
+.agenda-time-location {
+  background: #fff;
+  color: #59499e;
+  border-radius: 4px;
+}
+
+.agenda-time-location .icon {
+  background: #18cebb;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.agenda-time-location .text {
+  margin-left: 8px;
+}
+
+.agenda-time-location .text-time {
+  font-size: 0.7em;
+}
+
+.agenda-time-location .text-label {
+  margin-bottom: 4px;
+  font-size: 0.7em;
+}
+
+.lower {
+  text-transform: lowercase;
+}
+
+.agenda-date-time {
+  padding: 8px;
+  font-weight: 700;
+  width: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.agenda-location {
+  padding: 8px;
+  font-weight: 700;
+  width: 100%;
+}
+
+.agenda .add-to-schedule .content {
+  transform: none;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 1.8em;
+  padding-right: 16px;
+}
+
+.agenda-header .add-to-schedule {
+  width: 100%;
+  margin: 8px 0;
+  border-radius: 4px;
+  padding: 8px;
+  background: #18cebb;
+}
+
+.agenda-header .add-to-schedule[disabled] {
+  background: #5cba47;
+}
+
+.agenda .desc {
+  padding: 16px;
+  background: #fff;
+}
+
+.agenda .desc-title {
+  margin-bottom: 8px;
+}
+
+/* Login form */
+
+.form-main {
+  background: #fff;
+  min-height: 100%;
+}
+
+.form {
+  margin-top: 8px;
+  text-align: center;
+  width: 100%;
+  padding: 16px 8px;
+}
+
+.input.mdc-text-field {
+  margin: 8px 0;
+  border-radius: 8px;
+  width: 100%;
+  height: 46px;
+}
+
+.input-form {
+  margin: 8px 0;
+  width: 100%;
+  height: 46px;
+  background: #5cba47;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.2em;
+}
+
+.redirect-sign-in-up {
+  width: 100%;
+  font-size: 0.7em;
+}
+
+.redirect-sign-in-up a {
+  margin: 8px 0;
+}

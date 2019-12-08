@@ -10,6 +10,10 @@ class AuthenticationController < ApplicationController
     json_response(authorization: auth_token, user: current_user)
   end
 
+  def fallback_index_html
+    render file: 'public/index.html'
+  end
+
   private
 
   def auth_params

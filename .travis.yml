@@ -2,9 +2,13 @@ env:
   global:
     - CODECOV_TOKEN=396babc8-fec2-4632-a600-b1cf83935b2b
     - CC_TEST_REPORTER_ID=95724a58934a34e63837ee2906196cc47dfc11392571db03d365119e1803b1fa
-language: ruby
+language:
+  - ruby
+  - node_js
 rvm:
   - 2.6.3
+node_js:
+  - node
 services:
   - postgresql
 before_install:
@@ -16,12 +20,21 @@ notifications:
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
   - cp config/database.yml.travis config/database.yml
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
+    > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
+  - "./cc-test-reporter before-build"
 script:
   - bundle install
   - rails db:migrate
   - rspec
 after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+  - "./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT"
+deploy:
+  provider: heroku
+  api_key:
+    secure: lYsO17FFtngghqNbEKzfDgqsoQ97glfxPUmoU34/3ybz5c/kr2pCyIz8NmJKtJknVofK0/RSVjSBqmPizkS+hC9F49PXk9vDiEaiILMZ6rkP9Agkk2FQMFx5PuekG2o1hnd6vIfuvTHIPF4Eg4DuUftw599tZT9iCNE3B3eip1Cofc466XCanGhbKOyR+bfoi8DVMIOv2ky1QCnE1Oigdw0S1tbcFVK5Xj3Fi6dmS36N5yDyUzSXEb8Diz2RN3+gV2eWlPnVs3huMQkRm7ZYz441CWvgYV9RxsyIV3p5/kZ/+/JGE5+sa6YLGn3ozFEJWJQbN6eBKdzS7Jz7tddEBnG7xVaXvZucnV3qQjOCJ6OgAc6Pg3S9hX6H1Mn489WYyFhRExKaSvY7qDdUGnRdUdub3SO/JKs+YYPQ4gjilS+XszXt/JWTRQ34rbhL5rAesaiWhNacEoRf1KxbgIMlRC4Cen+/VkxmfQEDhCWIzsASiB+Mra/GT+Nl8IvGs8JCg+Kv4biOk/x67nTyhYEsSr/63T0Vi3sZiqjU7w1o3DMclfxn/Dju+WAHbftOX4qLTA9MU8QzNIXnPiSoBY0T6IWbxhYrg0kTKPdeP0QsEUc36sQNTiL+BI8u0fumQCQ8FapFuc/IONyyhcruf0ENYQ77uz0FPmCRfpTLE5FIF7s=
+  app:
+    master: conferences-schedule
+    development: dev-conferences-schedule
+  run: "rails db:migrate"
