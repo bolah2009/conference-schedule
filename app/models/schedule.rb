@@ -2,6 +2,7 @@
 
 class Schedule < ApplicationRecord
   belongs_to :agenda, foreign_key: :agenda_id, dependent: :destroy
+  belongs_to :user, foreign_key: :user_id, dependent: :destroy
 
   validates_presence_of :user_id, :agenda_id
   validates_uniqueness_of :agenda_id

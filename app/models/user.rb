@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :schedules, foreign_key: :user_id, dependent: :destroy
 
   validates_presence_of :name, :email, :job_title, :password_digest
-  validates :email, length: { maximum: 255 },
+  validates :email, length: { maximum: 100 },
                     uniqueness: { case_sensitive: false }
   validates :password, length: { minimum: 6 }
 
