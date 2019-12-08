@@ -6,5 +6,6 @@ FactoryBot.define do
     email { Faker::Name.name }
     job_title { Faker::Job.title }
     password { Faker::Name.name }
+    password_confirmation { password }
   end
 end
