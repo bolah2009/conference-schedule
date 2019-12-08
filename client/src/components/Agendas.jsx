@@ -7,7 +7,6 @@ import { findByID, dayDifference } from '../helpers/helpers';
 import Navigation from './Navigation';
 
 const Agendas = ({ conferenceID, startDate, agendas }) => {
-  console.log('ddddddd', agendas)
   if (!agendas) {
     return <Redirect to={`/conferences/${conferenceID}`} />;
   }

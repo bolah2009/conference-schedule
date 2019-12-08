@@ -33,7 +33,9 @@ const Agenda = ({
                 <p className="text-label">Date & Time</p>
                 <p className="text-time">
                   <span>{`${formatToDate(startTime)} `}</span>
-                  <span className="lower">{`${formatToTime(startTime)} - ${formatToTime(endTime)}`}</span>
+                  <span className="lower">
+                    {`${formatToTime(startTime)} - ${formatToTime(endTime)}`}
+                  </span>
                 </p>
               </div>
             </div>

@@ -23,17 +23,14 @@ const Login = () => {
   const { email, password } = loginState;
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(loginState);
     return dispatch(logIn(loginState));
   };
 
   const handleChange = ({ target: { value, name } }) => {
-    console.log(loginState);
     setLoginState({
       ...loginState,
       [name]: value,
     });
-    console.log(loginState);
   };
 
   if (shouldRedirect(isAuthenticated)) {

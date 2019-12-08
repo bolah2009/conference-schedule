@@ -2,6 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "proxy": "http://localhost:3001",
   "dependencies": {
     "@material/react-text-field": "^0.15.0",
@@ -19,7 +20,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
+    "test:watch": "npm test -- --watch",
     "eject": "react-scripts eject",
     "format": "npx prettier  --write '**/*.{css,html,js,json,md.json,yaml,yml,jsx}'",
     "format:check": "npx prettier  --check '**/*.{css,html,js,json,md.json,yaml,yml,jsx}'",

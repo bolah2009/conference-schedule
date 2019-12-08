@@ -11,53 +11,68 @@ import ExhibitorsIcon from './icons/ExhibitorsIcon';
 import ContactIcon from './icons/ContactIcon';
 import MapIcon from './icons/MapIcon';
 
+const TwitterFeeds = () => (
+  <section className="twitter-feeds">
+    <h4 className="twitter-feeds-title">Twitter Feeds</h4>
+    <div className="twitter-feeds-item">
+      <div className="d-flex ai-c">
+        <div className="bullet" />
+        <h5>28 March 2018</h5>
+      </div>
+      <p>
+        Lorem lorem this is a lorem, rem lorem lorem this is a lorem, this is a lorem, rem lorem
+        this is a lorem
+      </p>
+    </div>
+    <div className="twitter-feeds-item">
+      <div className="d-flex ai-c">
+        <div className="bullet" />
+        <h5>29 March 2018</h5>
+      </div>
+      <p>
+        Lorem lorem this is a lorem lorem this is a lorem, rem lorem this is a lorem, rem lorem this
+        is a lorem
+      </p>
+    </div>
+    <div className="twitter-feeds-item">
+      <div className="d-flex ai-c">
+        <div className="bullet" />
+        <h5>30 March 2018</h5>
+      </div>
+      <p>
+        Lorem lorem this is a lorem, rem lorem lorem this is a lorem, this is a lorem, rem lorem
+        this is a lorem
+      </p>
+    </div>
+    <div className="twitter-feeds-item">
+      <div className="d-flex ai-c">
+        <div className="bullet" />
+        <h5>18 April 2018</h5>
+      </div>
+      <p>
+        Lorem lorem this is lorem this is a lorem, a lorem, rem lorem this is a lorem, rem lorem
+        this is a lorem
+      </p>
+    </div>
+    <div className="twitter-feeds-item">
+      <div className="d-flex ai-c">
+        <div className="bullet" />
+        <h5>18 May 2018</h5>
+      </div>
+      <p>
+        Lorem lorem this is a lorem, rem lorem this is a lorem, rem lorem this is lorem this is a
+        lorem, a lorem
+      </p>
+    </div>
+  </section>
+);
+
 const Conference = ({ conference, location: { pathname } }) => {
   if (!conference) {
     return <Redirect to="/conferences" />;
   }
   const { name, startDate } = conference;
   const [days, hours, minutes] = formatToCountDown(startDate);
-
-  const TwitterFeeds = () => (
-    <section className="twitter-feeds">
-      <h4 className="twitter-feeds-title">Twitter Feeds</h4>
-      <div className="twitter-feeds-item">
-        <div className="d-flex ai-c">
-          <div className="bullet" />
-          <h5>18 March 2018</h5>
-        </div>
-        <p>Lorem lorem this is a lorem, rem lorem this is a lorem, rem lorem this is a lorem</p>
-      </div>
-      <div className="twitter-feeds-item">
-        <div className="d-flex ai-c">
-          <div className="bullet" />
-          <h5>18 March 2018</h5>
-        </div>
-        <p>Lorem lorem this is a lorem, rem lorem this is a lorem, rem lorem this is a lorem</p>
-      </div>
-      <div className="twitter-feeds-item">
-        <div className="d-flex ai-c">
-          <div className="bullet" />
-          <h5>18 March 2018</h5>
-        </div>
-        <p>Lorem lorem this is a lorem, rem lorem this is a lorem, rem lorem this is a lorem</p>
-      </div>
-      <div className="twitter-feeds-item">
-        <div className="d-flex ai-c">
-          <div className="bullet" />
-          <h5>18 March 2018</h5>
-        </div>
-        <p>Lorem lorem this is a lorem, rem lorem this is a lorem, rem lorem this is a lorem</p>
-      </div>
-      <div className="twitter-feeds-item">
-        <div className="d-flex ai-c">
-          <div className="bullet" />
-          <h5>18 March 2018</h5>
-        </div>
-        <p>Lorem lorem this is a lorem, rem lorem this is a lorem, rem lorem this is a lorem</p>
-      </div>
-    </section>
-  );
 
   return (
     <div>
