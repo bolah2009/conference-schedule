@@ -8,7 +8,7 @@ SimpleCov.formatters = SimpleCov::Formatter::MultiFormatter.new([
                                                                   SimpleCov::Formatter::Codecov
                                                                 ])
 SimpleCov.start :rails do
-  add_filter ['app/channels', 'app/jobs/', 'app/mailers/', 'app/controllers/application_controller.rb']
+  add_filter ['app/channels', 'app/jobs/', 'app/mailers/']
   add_group 'Models', 'app/models'
   add_group 'Controllers', 'app/controllers'
 end
