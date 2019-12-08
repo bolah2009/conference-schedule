@@ -2,8 +2,7 @@ require: rubocop-rspec
 AllCops:
   Exclude:
     - "bin/*"
-    - "db/migrate"
-    - "db/schema.rb"
+    - "db/*"
     - "config/*"
     - "Guardfile"
     - "Rakefile"
