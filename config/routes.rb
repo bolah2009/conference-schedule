@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   get 'schedules', to: 'schedules#show'
   post 'signup', to: 'users#create'
   post 'login', to: 'authentication#authenticate'
+
+  get '*path', to: "authentication#fallback_index_html"
 end
