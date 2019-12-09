@@ -1,0 +1,10 @@
+# Run this and set the following values: SECRET_KEY_BASE
+
+# cp config/application.yml.example config/application.yml
+
+
+# Key for JWT authentication, see app/lib/json_web_token.rb
+#
+# ENV['SECRET_KEY_BASE']
+
+SECRET_KEY_BASE: '********************************'
