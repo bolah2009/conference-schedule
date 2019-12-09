@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class AuthenticationController < ApplicationController
-  skip_before_action :authorize_request, only: :authenticate
+  skip_before_action :authorize_request, only: %i[authenticate fallback_index_html]
 
   def authenticate
     auth_token =

@@ -59,7 +59,7 @@ const Login = () => {
           <TextField className="input" label="Password">
             <Input
               autoComplete="current-password"
-              inputType="password"
+              type="password"
               title="Password"
               value={password}
               name="password"
