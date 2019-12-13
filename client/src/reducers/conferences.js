@@ -1,3 +1,4 @@
+import Toast from 'light-toast';
 import {
   CONFERENCES_REQUEST,
   CONFERENCES_RECEIVE,
@@ -11,8 +12,10 @@ const conferences = (
   },
   { type, data, message },
 ) => {
+  Toast.hide();
   switch (type) {
     case CONFERENCES_REQUEST:
+      Toast.loading('Getting conference list');
       return {
         ...state,
         ...{
@@ -32,6 +35,7 @@ const conferences = (
         },
       };
     case CONFERENCES_FAILURE:
+      Toast.fail(message || 'Failed', 1500);
       return {
         ...state,
         ...{

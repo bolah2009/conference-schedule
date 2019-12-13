@@ -8,6 +8,7 @@ RSpec.describe 'Schedules API', type: :request do
   let!(:agendas) { create_list(:agenda, 10) }
   let(:id) { agendas.first.id }
   let(:schedule) { create(:schedule, user_id: user.id, agenda_id: id) }
+  let(:schedule_id) { schedule.id }
   let(:headers) { valid_headers }
   let(:invalid_headers) { valid_headers.except('Authorization') }
 
@@ -35,19 +36,18 @@ RSpec.describe 'Schedules API', type: :request do
       end
 
       it 'returns a not found message' do
-        expect(response.body).to match(/Missing token/)
+        expect(response.body).to match(%r{Please login/signup to continue.})
       end
     end
   end
 
-  # Test suite for PUT /conferences/:conference_id/schedules
-  describe 'POST /schedules/new' do
+  describe 'POST /schedules' do
     let(:valid_attributes) do
       { agenda_id: id }.to_json
     end
 
     context 'when request attributes are valid' do
-      before { post '/schedules/new', params: valid_attributes, headers: headers }
+      before { post '/schedules', params: valid_attributes, headers: headers }
 
       it 'returns status code :created (201)' do
         expect(response).to have_http_status(:created)
@@ -55,7 +55,7 @@ RSpec.describe 'Schedules API', type: :request do
     end
 
     context 'when request attributes are invalid' do
-      before { post '/schedules/new', params: {}, headers: headers }
+      before { post '/schedules', params: {}, headers: headers }
 
       it 'returns status code :unprocessable_entity (422)' do
         expect(response).to have_http_status(:unprocessable_entity)
@@ -64,6 +64,24 @@ RSpec.describe 'Schedules API', type: :request do
       it 'returns a failure message' do
         expect(response.body).to match(/Validation failed: Agenda must exist/)
       end
+    end
+  end
+
+  # Test suite for DELETE /schedules/:id
+  describe 'DELETE /schedules/:id' do
+    before { delete "/schedules/#{schedule_id}", params: {}, headers: headers }
+
+    it 'returns status code 202' do
+      expect(response).to have_http_status(:accepted)
+    end
+  end
+
+  # Test suite for DELETE /schedules/:id
+  describe 'DELETE /schedules/:id' do
+    before { delete "/schedules/#{schedule_id}", params: {}, headers: { Authorization: 'invalid' } }
+
+    it 'returns status code 422' do
+      expect(response).to have_http_status(:unprocessable_entity)
     end
   end
 end

@@ -14,7 +14,7 @@ class Message
   end
 
   def self.missing_token
-    'Missing token'
+    'Please login/signup to continue.'
   end
 
   def self.unauthorized

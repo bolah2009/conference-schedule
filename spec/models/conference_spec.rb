@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Conference, type: :model do
-  it { is_expected.to belong_to(:user).with_foreign_key(:creator_id).dependent(:destroy) }
+  it { is_expected.to belong_to(:user).with_foreign_key(:creator_id) }
   it { is_expected.to have_many(:agendas).dependent(:destroy) }
 
   it { is_expected.to validate_presence_of(:name) }

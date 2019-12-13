@@ -1,23 +1,47 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { addToSchedules } from '../actions/scheduleActions';
+import { addToSchedules, removeSchedule } from '../actions/scheduleActions';
 import PlusIcon from './icons/PlusIcon';
+import MinusIcon from './icons/MinusIcon';
 
-const AddToScheduleButton = ({ iconSize, buttonText, schedulesList, agendaID, addToSchedules }) => {
-  const handleClick = () => addToSchedules(agendaID);
-  const disableButton = (list, id) => list.includes(id);
+const AddToScheduleButton = ({
+  iconSize,
+  buttonText,
+  schedulesList,
+  agendaID,
+  addToSchedules,
+  removeSchedule,
+}) => {
+  const buttonScheduleID = schedulesList.find(({ agenda_id: id }) => agendaID === id);
+  const handleClick = () => {
+    if (buttonScheduleID) {
+      const { id: scheduleID } = buttonScheduleID;
+      removeSchedule(scheduleID);
+    } else {
+      addToSchedules(agendaID);
+    }
+  };
+
+  let text;
+  if (buttonText !== 'Your Schedule') {
+    text = buttonScheduleID ? 'Remove from your schedule' : 'Add to your schedule';
+  }
 
   return (
     <button
+      id={buttonScheduleID ? 'remove' : 'add'}
       className="d-flex jc-c add-to-schedule"
-      disabled={disableButton(schedulesList, agendaID)}
       type="button"
       onClick={handleClick}
     >
       <div className="content ai-c d-flex jc-sb">
-        <PlusIcon width={iconSize} height={iconSize} />
-        <div className="text">{buttonText}</div>
+        {buttonScheduleID ? (
+          <MinusIcon width={iconSize} height={iconSize} />
+        ) : (
+          <PlusIcon width={iconSize} height={iconSize} />
+        )}
+        <div className="text">{text || buttonText}</div>
       </div>
     </button>
   );
@@ -25,7 +49,7 @@ const AddToScheduleButton = ({ iconSize, buttonText, schedulesList, agendaID, ad
 
 export default connect(
   ({ schedules: { data: schedulesList } }) => ({ schedulesList }),
-  { addToSchedules },
+  { addToSchedules, removeSchedule },
 )(AddToScheduleButton);
 
 AddToScheduleButton.propTypes = {
@@ -33,10 +57,17 @@ AddToScheduleButton.propTypes = {
   buttonText: PropTypes.string,
   iconSize: PropTypes.string,
   addToSchedules: PropTypes.func.isRequired,
-  schedulesList: PropTypes.arrayOf(PropTypes.number).isRequired,
+  removeSchedule: PropTypes.func.isRequired,
+  schedulesList: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      agenda_id: PropTypes.number,
+    }),
+  ),
 };
 
 AddToScheduleButton.defaultProps = {
   buttonText: 'Your Schedule',
   iconSize: '8px',
+  schedulesList: [],
 };

@@ -481,7 +481,52 @@ const DEFAULT_STATE = {
   schedules: {
     isFetching: false,
     success: false,
-    data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    data: [
+      {
+        agenda_id: 1,
+        id: 1,
+      },
+      {
+        agenda_id: 2,
+        id: 2,
+      },
+      {
+        agenda_id: 3,
+        id: 3,
+      },
+      {
+        agenda_id: 4,
+        id: 4,
+      },
+      {
+        agenda_id: 5,
+        id: 5,
+      },
+      {
+        agenda_id: 6,
+        id: 6,
+      },
+      {
+        agenda_id: 7,
+        id: 7,
+      },
+      {
+        agenda_id: 8,
+        id: 8,
+      },
+      {
+        agenda_id: 10,
+        id: 10,
+      },
+      {
+        agenda_id: 19,
+        id: 11,
+      },
+      {
+        agenda_id: 15,
+        id: 38,
+      },
+    ],
   },
 };
 

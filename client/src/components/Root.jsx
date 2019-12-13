@@ -31,6 +31,10 @@ const Root = ({ store }) => (
         <Route path="/conferences/:conferenceID/*" component={UnderConstruction} />
         <Route path="/*" component={NotFound} />
       </Switch>
+      <footer className="footer d-flex">
+        Made with ❤ by&nbsp;
+        <a href="https://bolabuari.com/">Bola</a>
+      </footer>
     </Router>
   </Provider>
 );

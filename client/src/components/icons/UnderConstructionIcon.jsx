@@ -427,5 +427,5 @@ UnderConstructionIcon.propTypes = {
 
 UnderConstructionIcon.defaultProps = {
   width: '100%',
-  height: '',
+  height: '200px',
 };

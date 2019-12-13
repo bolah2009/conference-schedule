@@ -19,7 +19,7 @@ const ProfilePage = ({ user: { name, job_title: jobTitle } }) => {
   }, [dispatch]);
 
   const schedulesArray = conferences.data.flatMap(({ agendas }) =>
-    agendas.filter(({ id }) => schedules.data.includes(id)),
+    agendas.filter(({ id }) => schedules.data.some(({ agenda_id: agendaID }) => id === agendaID)),
   );
 
   return (
