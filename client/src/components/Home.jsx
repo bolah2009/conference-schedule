@@ -13,7 +13,7 @@ const Home = ({ conferences }) => {
     dispatch(fetchConferences());
   }, [dispatch]);
 
-  const topConf = conf => conf.slice(0, 2);
+  const topConf = conf => conf.slice(0, 3);
   const renderConference = conference => (
     <ConferenceList key={conference.id} conference={conference} />
   );

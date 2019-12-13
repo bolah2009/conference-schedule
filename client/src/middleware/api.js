@@ -1,21 +1,23 @@
-const postData = async (url = '', data = {}, auth = undefined) => {
-  // Default options are marked with *
+const fetchData = async (url = '', data = {}, auth = '', method = 'POST') => {
   const response = await fetch(url, {
-    method: 'POST', // *GET, POST, PUT, DELETE, etc.
-    mode: 'cors', // no-cors, *cors, same-origin
-    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-    credentials: 'same-origin', // include, *same-origin, omit
+    method,
+    mode: 'cors',
+    cache: 'no-cache',
+    credentials: 'same-origin',
     headers: {
       'Content-Type': 'application/json',
       Authorization: auth,
-      // 'Content-Type': 'application/x-www-form-urlencoded',
     },
-    redirect: 'follow', // manual, *follow, error
-    referrer: 'no-referrer', // no-referrer, *client
-    body: JSON.stringify(data), // body data type must match "Content-Type" header
+    redirect: 'follow',
+    referrer: 'no-referrer',
+    body: JSON.stringify(data),
   });
-  return response; // parses JSON response into native JavaScript objects
+  return response;
 };
+
+const postData = (url = '', data = {}, auth = '') => fetchData(url, data, auth, 'POST');
+
+const deleteData = (url = '', auth = '') => fetchData(url, {}, auth, 'DELETE');
 
 const getData = async (url = '', auth = '') => {
   const data = await fetch(url, {
@@ -35,11 +37,15 @@ export const signUpUser = (data = {}) => {
 };
 
 export const addSchedule = (data = {}, auth = '') => {
-  return postData(`/schedules/new`, data, auth);
+  return postData(`/schedules`, data, auth);
 };
 
 export const getSchedule = auth => {
   return getData(`/schedules`, auth);
+};
+
+export const deleteSchedule = (scheduleID, auth) => {
+  return deleteData(`/schedules/${scheduleID}`, auth);
 };
 
 export const getConferences = auth => {

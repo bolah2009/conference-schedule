@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  resources :conferences do
-    resources :agendas
+  resources :conferences, only: [:index, :show] do
+    resources :agendas, only: [:index, :show]
   end
 
-  post 'schedules/new', to: 'schedules#create'
-  get 'schedules', to: 'schedules#show'
+  resources :schedules, only: [:index, :create, :destroy]
+
   post 'signup', to: 'users#create'
   post 'login', to: 'authentication#authenticate'
 

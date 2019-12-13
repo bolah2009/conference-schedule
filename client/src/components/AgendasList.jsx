@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link, useRouteMatch } from 'react-router-dom';
 import AddToScheduleButton from './AddToScheduleButton';
@@ -7,7 +8,16 @@ import SpeakerIcon from './icons/SpeakerIcon';
 import BrandIcon from './icons/BrandIcon';
 
 const AgendasList = ({ agenda: { location, startTime, endTime, title, id } }) => {
-  const { url } = useRouteMatch();
+  let {
+    params: { conferenceID },
+  } = useRouteMatch();
+  const { data: conferences } = useSelector(({ conferences }) => conferences);
+  if (!conferenceID) {
+    ({ id: conferenceID } = conferences.find(
+      ({ agendas }) => agendas.findIndex(({ id: agendaID }) => id === agendaID) !== -1,
+    ));
+  }
+
   return (
     <section>
       <div className="ai-c d-flex time-wrapper">
@@ -15,15 +25,18 @@ const AgendasList = ({ agenda: { location, startTime, endTime, title, id } }) =>
         <h4 className="agenda-time">{`${formatToTime(startTime)} - ${formatToTime(endTime)}`}</h4>
       </div>
       <div className="d-flex jc-sb agenda-card">
-        <Link className="link d-flex col jc-c grow-1" to={`${url}/${id}`}>
+        <Link
+          className="link d-flex col jc-c grow-1"
+          to={`/conferences/${conferenceID}/agendas/${id}`}
+        >
           <h5 className="link-title">{title}</h5>
           <div className="d-flex jc-sb">
             <div className="d-flex ai-c">
-              <SpeakerIcon fill="#59499e" height="12" width="12px" />
+              <SpeakerIcon fill="#59499e" height="12px" width="12px" />
               <p className="link-speaker"> Speaker</p>
             </div>
             <div className="d-flex ai-c">
-              <BrandIcon fill="#59499e" height="12" width="12px" />
+              <BrandIcon fill="#59499e" height="12px" width="12px" />
               <p className="link-location">{location}</p>
             </div>
           </div>

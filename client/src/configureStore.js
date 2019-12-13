@@ -1,16 +1,17 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
-import { createLogger } from 'redux-logger';
 import rootReducer from './reducers';
 import { loadState, saveState } from './localStorage';
 
-const loggerMiddleware = createLogger();
+let middleware = [thunkMiddleware];
+if (process.env.NODE_ENV !== 'production') {
+  // eslint-disable-next-line global-require
+  const loggerMiddleware = require('redux-logger').createLogger();
+  middleware = [...middleware, loggerMiddleware];
+}
+
 const configureStore = () => {
-  const store = createStore(
-    rootReducer,
-    loadState(),
-    applyMiddleware(thunkMiddleware, loggerMiddleware),
-  );
+  const store = createStore(rootReducer, loadState(), applyMiddleware(...middleware));
 
   store.subscribe(() => {
     saveState({

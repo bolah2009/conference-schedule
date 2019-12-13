@@ -285,5 +285,5 @@ FourOFour.propTypes = {
 
 FourOFour.defaultProps = {
   width: '100%',
-  height: '',
+  height: '200px',
 };

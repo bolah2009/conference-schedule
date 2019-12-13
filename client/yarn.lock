@@ -6642,6 +6642,11 @@ levn@^0.3.0, levn@~0.3.0:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
 
+light-toast@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/light-toast/-/light-toast-0.2.2.tgz#c6f23b54a5a34ceef2f791184a95fb48a5fb14c2"
+  integrity sha512-ZY61LEmNBaX3J1hN7st9l89r4kFhBqIwaJpKkS0cO6lHmdMvJIL0z9r+XWNZQrnmiyD0qusoZbOh3uaLl58pcg==
+
 lines-and-columns@^1.1.6:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.1.6.tgz#1c00c743b433cd0a4e80758f7b64a57440d9ff00"

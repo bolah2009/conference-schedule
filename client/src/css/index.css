@@ -6,22 +6,10 @@
   background: transparent;
 }
 
-:root {
-  --color-1: #35bee0;
-  --color-2: #59499e;
-  --color-3: #18cebb;
-  --color-4: #ffc611;
-  --color-5: #5cba47;
-  --color-6: #8589ef;
-  --color-7: #ff6ea1;
-}
-
 body {
   font-family: 'Montserrat', sans-serif;
   overflow-x: hidden;
   background: #fff;
-
-  /* background: #f4f4f4; */
   color: #59499e;
 }
 
@@ -45,10 +33,6 @@ button {
   background: none;
 }
 
-button[disable] {
-  cursor: not-allowed;
-}
-
 h1 {
   font-size: 1.2em;
 }
@@ -66,7 +50,7 @@ h5 {
 /* Navigation */
 
 .nav-bar {
-  background-color: var(--color-2);
+  background-color: #59499e;
   padding: 8px 12px;
 }
 
@@ -342,7 +326,7 @@ div.half-slide-right {
   border-bottom-right-radius: 6px;
 }
 
-.add-to-schedule[disabled] {
+#remove.add-to-schedule {
   background: #5cba47;
   cursor: not-allowed;
 }
@@ -451,8 +435,9 @@ div.half-slide-right {
   background: #18cebb;
 }
 
-.agenda-header .add-to-schedule[disabled] {
+.agenda-header #remove.add-to-schedule {
   background: #5cba47;
+  cursor: not-allowed;
 }
 
 .agenda .desc {
@@ -503,4 +488,9 @@ div.half-slide-right {
 
 .redirect-sign-in-up a {
   margin: 8px 0;
+}
+
+.footer {
+  margin: 16px 8px;
+  font-size: 0.8em;
 }
